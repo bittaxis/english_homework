@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inglés - Historia</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f5f5f5;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .story-container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      line-height: 2; /* más aireado y legible */
+    }
+
+    input[type="text"] {
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      padding: 5px 8px;
+      width: 120px;
+      display: inline-block;
+      text-align: center;
+      transition: all 0.3s;
+      font-weight: bold;
+    }
+
+    /* ✅ Correcto */
+    input.correct {
+      border-color: #155724 !important;
+      background-color: #28a745 !important;
+      color: #fff !important;
+    }
+
+    /* ❌ Incorrecto */
+    input.incorrect {
+      border-color: #721c24 !important;
+      background-color: #dc3545 !important;
+      color: #fff !important;
+    }
+
+    /* ✔ y ✘ */
+    .mark {
+      font-size: 1.2em;
+      margin-left: 5px;
+      font-weight: bold;
+    }
+
+    .mark.correct {
+      color: #28a745;
+    }
+
+    .mark.incorrect {
+      color: #dc3545;
+    }
+
+    /* Mensaje emergente */
+    .alert-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .alert-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+    }
+
+    .alert-box h2 {
+      margin-bottom: 20px;
+      color: #28a745;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Tarea Inglés</h1>
+
+  <div class="story-container">
+    <form id="storyForm">
+      <p>
+        When I was a child, I <input type="text" data-answer="had" placeholder="have" required> <!--Cuando era niño, tenía tres hermanas y vivíamos en Chile.-->
+        three sisters and we lived in Chile. One summer we <input type="text" data-answer="went" placeholder="go" required> <!--Un verano fuimos a la playa de Pichilemu.-->
+        to the beach of Pichilemu. We <input type="text" data-answer="traveled" placeholder="travel" required> <!--Viajamos en auto y nos sentimos muy emocionados.-->
+        by car and felt very excited. When we arrived, the sun <input type="text" data-answer="shone" placeholder="shine" required> <!--Cuando llegamos, el sol brillaba fuertemente sobre el mar.-->
+        brightly over the sea. We <input type="text" data-answer="bought" placeholder="buy" required> <!--Compramos mariscos frescos de un pescador local.-->
+        fresh seafood from a local fisherman, and later we <input type="text" data-answer="ate" placeholder="eat" required> <!--Más tarde comimos una deliciosa pizza juntos.-->
+        a delicious pizza together. That afternoon we <input type="text" data-answer="played" placeholder="play" required> <!--Esa tarde jugamos con las olas sin parar.-->
+        with the waves without stopping. My parents <input type="text" data-answer="told" placeholder="tell" required> <!--Mis padres nos dijeron que nos quedaríamos todo el fin de semana.-->
+        us that we would stay the whole weekend, and that news <input type="text" data-answer="made" placeholder="make" required> <!--Esa noticia nos hizo muy felices.-->
+        us very happy. At night we <input type="text" data-answer="walked" placeholder="walk" required> <!--Por la noche caminamos por la playa.-->
+        along the beach, where we <input type="text" data-answer="met" placeholder="meet" required> <!--Allí conocimos a un perro solitario y lo llamamos “Perro Palo.”-->
+        a lonely dog and named him “Perro Palo.” My mom <input type="text" data-answer="cooked" placeholder="cook" required> <!--Mi mamá cocinó pescado porque le encantaba prepararlo.-->
+        fish because she loved preparing it. The food <input type="text" data-answer="tasted" placeholder="taste" required> <!--La comida sabía increíble para todos nosotros.-->
+        amazing for all of us. That night I <input type="text" data-answer="looked" placeholder="look" required> <!--Esa noche miré las estrellas por mucho tiempo.-->
+        at the stars for a long time and I <input type="text" data-answer="stayed" placeholder="stay" required> <!--Me quedé despierto muy tarde en silencio.-->
+        awake very late in silence. The next morning we <input type="text" data-answer="enjoyed" placeholder="enjoy" required> <!--A la mañana siguiente disfrutamos la playa otra vez.-->
+        the beach again. We <input type="text" data-answer="laughed" placeholder="laugh" required> <!--Reímos y compartimos muchas historias juntos.-->
+        and <input type="text" data-answer="shared" placeholder="share" required> <!--Reímos y compartimos muchas historias juntos.-->
+        many stories together. That weekend <input type="text" data-answer="became" placeholder="become" required> <!--Ese fin de semana se convirtió en uno de mis recuerdos favoritos.-->
+        one of my favorite memories. Years later I <input type="text" data-answer="visited" placeholder="visit" required> <!--Años después visité Pichilemu otra vez.-->
+        Pichilemu again, and the Perro Palo was still <input type="text" data-answer="waiting" placeholder="wait" required> <!--El Perro Palo todavía esperaba para jugar con las personas.-->
+        to play with people.
+      </p>
+
+      <button type="submit" class="btn btn-primary mt-3">Validar</button>
+    </form>
+  </div>
+
+  <!-- Mensaje emergente -->
+  <div class="alert-overlay" id="alertOverlay">
+    <div class="alert-box">
+      <h2>¡Muy bien! 🎉</h2>
+      <p>Has resuelto correctamente todas las preguntas.</p>
+      <button class="btn btn-success" onclick="closeAlert()">Cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("storyForm");
+    const overlay = document.getElementById("alertOverlay");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      let allCorrect = true;
+
+      document.querySelectorAll("input[type='text']").forEach(input => {
+        let mark = input.nextElementSibling;
+        if (!mark || !mark.classList.contains("mark")) {
+          mark = document.createElement("span");
+          mark.classList.add("mark");
+          input.insertAdjacentElement("afterend", mark);
+        }
+
+        if (input.value.trim().toLowerCase() === input.dataset.answer.toLowerCase()) {
+          input.classList.add("correct");
+          input.classList.remove("incorrect");
+          input.setAttribute("disabled", true);
+          mark.textContent = "✔";
+          mark.classList.add("correct");
+          mark.classList.remove("incorrect");
+        } else {
+          input.classList.add("incorrect");
+          input.classList.remove("correct");
+          input.removeAttribute("disabled");
+          mark.textContent = "✘";
+          mark.classList.add("incorrect");
+          mark.classList.remove("correct");
+          allCorrect = false;
+        }
+      });
+
+      if (allCorrect) {
+        overlay.style.display = "flex";
+      }
+    });
+
+    function closeAlert() {
+      overlay.style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
